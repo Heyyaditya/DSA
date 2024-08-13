@@ -1,0 +1,45 @@
+#include<stdio.h>
+void swap(int *a,int *b){
+    int temp;
+    temp=*a;
+    *a=*b;
+    *b=temp;     
+}
+int partiton(int a[],int lb,int ub){
+    int pivot=a[lb]; 
+    int start=lb;
+    int end=ub-1;
+    while(start<end){
+        while(start<=ub && a[start]<=a[pivot]){
+            start++;
+        }
+        while(a[end]>pivot){
+            end--;
+        }
+    
+    if(start<end){
+        swap(&a[start],&a[end]);
+    }
+    }
+        swap(&a[lb],&a[end]);
+    
+    return end;
+    }
+
+void sort(int a[],int lb,int ub){
+   if(lb<ub){
+    int loc=partiton(a,lb,ub);
+    sort(a,lb,loc-1);
+    sort(a,loc+1,ub);
+   }
+}
+int main(){
+    int a[]={2,6,4,1,5};
+    int size=sizeof(a)/sizeof(a[0]);
+    sort(a,0,size-1);
+    for(int i=0;i<size;i++){
+        printf("%d ",a[i]);
+    }
+    printf("\n");
+    return 0;
+}
