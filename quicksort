@@ -7,9 +7,9 @@ void swap(int *a,int *b){
 }
 int partiton(int a[],int lb,int ub){
     int pivot=a[lb]; 
-    int start=lb;
-    int end=ub-1;
-    while(start<end){
+    int start=lb-1;
+    int end=ub;
+    while(start<=end){
         while(start<=ub && a[start]<=a[pivot]){
             start++;
         }
